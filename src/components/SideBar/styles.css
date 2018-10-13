@@ -1,0 +1,16 @@
+.sidebar {
+  width: 80px;
+  height: 100vh;
+  flex: none;
+  order: 0;
+  background-color: #25272E;
+}
+
+.logo::after {
+  content: "";
+  width: 100%;
+  height: 2px;
+  display: block;
+  background-color: #1D2028;
+  border-bottom: 1px solid #31343C;
+}

@@ -1,26 +1,25 @@
 {
-  "name": "TagChatter",
+  "name": "tagchatter",
+  "version": "0.1.0",
   "private": true,
-  "version": "1.0.0",
-  "main": "server.js",
-  "license": "MIT",
   "dependencies": {
-    "body-parser": "^1.17.2",
-    "cors": "^2.8.4",
-    "express": "^4.15.3",
-    "faker": "^4.1.0",
-    "morgan": "^1.9.0",
-    "ramda": "^0.24.1",
-    "ramda-fantasy": "^0.8.0",
-    "random-js": "^1.0.8",
-    "swagger-ui-express": "^2.0.8",
-    "titleize": "^1.0.0",
-    "uuid": "^3.1.0"
+    "react": "^16.5.2",
+    "react-dom": "^16.5.2",
+    "react-scripts": "2.0.4"
   },
   "scripts": {
-    "start": "node server.js"
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
   },
-  "engines": {
-    "node": "~7"
-  }
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }
