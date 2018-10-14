@@ -1,14 +1,19 @@
-html {
+html,body {
   height: 100%;
+  /* overflow: hidden; -------> Mobile devices need this to scroll (small bug?!?!)*/ 
+}
+
+body {
+  font-family: 'IBM Plex Sans', sans-serif;
 }
 
 .wrapper {
   display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  /* min-height: 100vh; */
+  min-height: 100vh;
 }
 
 .content {
+  display: flex;
+  flex-direction: column;
   flex: 1;
 }

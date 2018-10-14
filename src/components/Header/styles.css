@@ -1,10 +1,11 @@
 .header {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
   height: 82px;
   border-bottom: 1px solid #EEEEEE;
   padding: 16px 22px;
   color: #626262;
-  display: flex;
-  justify-content: space-between;
 }
 
 .header__title {
@@ -15,7 +16,7 @@
 }
 
 .header__parrots-count {
-  display: flex;
+  /* display: flex; */
 }
 
 .header__parrots-count::before {
