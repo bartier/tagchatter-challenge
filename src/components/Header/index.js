@@ -1,4 +1,6 @@
 import React from 'react'
+import ParrotsCounter from '../ParrotsCounter'
+
 import './styles.css'
 
 class Header extends React.Component {
@@ -6,7 +8,7 @@ class Header extends React.Component {
     return <header className="header">
       <h1 className="header__title">#tagchatter</h1>
       <div className="header__parrots-count">
-        <span className="header__title" id="parrots-counter">0</span>
+        <ParrotsCounter className="header__title" parrots={this.props.parrots}/>
       </div>
     </header>
   }

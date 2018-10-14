@@ -7,7 +7,6 @@ import Form from './components/Form'
 
 import './reset.css'
 import './styles.css'
-import './queries.css'
 
 import api from './services/api'
 
@@ -22,18 +21,19 @@ class TagChatter extends React.Component {
         name: ''
       },
       messages: [],
-      parrotsCount: 0
+      parrots: 0
     }
 
     // [2] Updates messages in 3s
-    window.setInterval(() => {
-      this.loadMessages();
-    }, 3000);
+    // window.setInterval(() => {
+    //   this.loadMessages();
+    // }, 3000);
   }
 
   componentDidMount() {
     this.loadUserData();
     this.loadMessages();
+    this.loadParrots();
   }
 
   loadUserData = async () => {
@@ -52,7 +52,15 @@ class TagChatter extends React.Component {
     console.log('Messages loaded');
   }
 
-  sendMessage = (messageContent) => {
+  loadParrots = async () => {
+    const response = await api.get("/messages/parrots-count");
+
+    this.setState({ parrots: response.data});
+
+    console.log('Parrots loaded');
+  }
+
+  sendMessage = async (messageContent) => {
     const newMessage = {
       author_id: this.state.user.id,
       message: messageContent
@@ -60,10 +68,11 @@ class TagChatter extends React.Component {
 
     console.log(newMessage);
 
-    api.post('/messages', newMessage).then((response) => {
+    await api.post('/messages', newMessage).then((response) => {
       const responseMessage = response.data;
 
       this.setState({ messages: this.state.messages.concat(responseMessage) })
+      
     }).catch((error) => {
       // handle error here.
     });
@@ -71,14 +80,34 @@ class TagChatter extends React.Component {
     console.log('sent message')
   }
 
+  updateMessageParrot = async (message) => {
+    if (message.has_parrot) {
+      await api.put(`/messages/ ${message.id} /unparrot`, {}).then((response) => {
+        console.log(response.data);
+
+        const newParrotsCount = this.state.parrotsCount - 1;
+
+        this.setState({ parrots: newParrotsCount});
+      });
+    }
+    else {
+      await api.put(`/messages/ ${message.id} /parrot`, {}).then((response) => {
+        console.log(response.data);
+
+        const newParrotsCount = this.state.parrotsCount + 1;
+
+        this.setState({ parrots: newParrotsCount });
+      });
+    }
+  }
+
   render() {
 
     return <div className="wrapper">
       <SideBar />
-
       <div className="content">
-        <Header/>
-        <Messages messages={this.state.messages}/>
+        <Header parrots={this.state.parrots}/>
+        <Messages messages={this.state.messages} updateMessageParrot={this.updateMessageParrot}/>
 
         <Form avatar={this.state.user.avatar} author_id={this.state.user.id}
               sendMessage={this.sendMessage}/>

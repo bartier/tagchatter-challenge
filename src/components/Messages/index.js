@@ -25,7 +25,7 @@ class Messages extends React.Component {
       <div className="messages">
         {
           this.props.messages.map(message => (
-            <Message key={message.id} {...message}/>
+            <Message key={message.id} updateMessageParrot={this.props.updateMessageParrot} {...message}/>
           ))
         }
         <div ref={el => { this.el = el; }} />

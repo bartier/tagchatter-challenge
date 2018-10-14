@@ -12,6 +12,19 @@ class Message extends React.Component {
   return currentDate.format("HH:mm");
 }
 
+handleParrotClick = (event) => {
+  const message = {
+    id: this.props.id,
+    content: this.props.content,
+    has_parrot: this.props.has_parrot,
+    created_at: this.props.created_at,
+    author: this.props.author
+  }
+  console.log(message);
+
+  this.props.updateMessageParrot(message);
+}
+
   render() {
     return <div className="message">
 
@@ -25,9 +38,10 @@ class Message extends React.Component {
         <span className="message-date">{this.formateDate(this.props.created_at)}</span>
 
 
-        {this.props.has_parrot ? 
-        <img className="parrot" src="parrot.svg" alt="Parrot" /> : 
-        <img className="parrot" src="parrot-grey.svg" alt="Parrot" />}
+        <img className="parrot"
+             onClick={this.handleParrotClick} 
+             src={this.props.has_parrot ? "parrot.svg" : "parrot-grey.svg"} 
+             alt="Parrot" /> : 
 
         <p className="message-content">
           {this.props.content}
