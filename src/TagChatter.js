@@ -24,7 +24,6 @@ class TagChatter extends React.Component {
       parrots: 0
     }
 
-    // [2] Updates messages in 3s
     // window.setInterval(() => {
     //   this.loadMessages();
     // }, 3000);
@@ -55,7 +54,7 @@ class TagChatter extends React.Component {
   loadParrots = async () => {
     const response = await api.get("/messages/parrots-count");
 
-    this.setState({ parrots: response.data});
+    this.setState({ parrots: response.data });
 
     console.log('Parrots loaded');
   }
@@ -72,12 +71,12 @@ class TagChatter extends React.Component {
       const responseMessage = response.data;
 
       this.setState({ messages: this.state.messages.concat(responseMessage) })
-      
+
     }).catch((error) => {
-      // handle error here.
+      //TODO: handle errors.
     });
-    
-    console.log('sent message')
+
+    console.log('Sent message');
   }
 
   updateMessageParrot = async (message) => {
@@ -87,7 +86,7 @@ class TagChatter extends React.Component {
 
         const newParrotsCount = this.state.parrotsCount - 1;
 
-        this.setState({ parrots: newParrotsCount});
+        this.setState({ parrots: newParrotsCount });
       });
     }
     else {
@@ -106,11 +105,12 @@ class TagChatter extends React.Component {
     return <div className="wrapper">
       <SideBar />
       <div className="content">
-        <Header parrots={this.state.parrots}/>
-        <Messages messages={this.state.messages} updateMessageParrot={this.updateMessageParrot}/>
+        <Header parrots={this.state.parrots} />
+        <Messages messages={this.state.messages} 
+                  updateMessageParrot={this.updateMessageParrot} />
 
-        <Form avatar={this.state.user.avatar} author_id={this.state.user.id}
-              sendMessage={this.sendMessage}/>
+        <Form avatar={this.state.user.avatar}
+              sendMessage={this.sendMessage} />
       </div>
     </div>
   }

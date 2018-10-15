@@ -1,7 +1,3 @@
-.parrots-count {
-  /* display: flex; */
-}
-
 .parrots-count::before {
   content: url('/light-parrot.svg');
   align-self: center;

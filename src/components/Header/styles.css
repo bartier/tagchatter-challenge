@@ -8,9 +8,19 @@
   color: #626262;
 }
 
-.header__title {
+.title {
   font-family: 'IBM Plex Sans', sans-serif;
   font-weight: normal;
   line-height: normal;
   font-size: 36px;
+}
+
+.parrots-count {
+  display: flex;
+}
+
+.parrots-count::before {
+  content: url('/light-parrot.svg');
+  align-self: center;
+  margin-right: 10px;
 }
