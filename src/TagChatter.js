@@ -26,9 +26,9 @@ class TagChatter extends React.Component {
       sendErrorAlert: false
     }
 
-    // window.setInterval(() => {
-    //   this.loadMessages();
-    // }, 3000);
+    window.setInterval(() => {
+      this.loadMessages();
+    }, 3000);
   }
 
   componentDidMount() {
@@ -80,18 +80,25 @@ class TagChatter extends React.Component {
   }
 
   updateMessageParrot = async (message) => {
-    let newParrotsCount;
-    let messageWithParrot;
 
     if (message.has_parrot) {
       console.log('message has parrot');
 
       await api.put(`/messages/${message.id}/unparrot`, {}).then((response) => {
 
-        messageWithParrot = response.data;
-        newParrotsCount = this.state.parrots - 1;
+        const messageWithParrot = response.data;
+        const newParrotsCount = this.state.parrots - 1;
 
-        this.setState({ parrots: newParrotsCount});
+        const newMessages = Array.from(this.state.messages).map((message) => {
+          if (message.id == messageWithParrot.id) {
+            message.has_parrot = false;
+          }
+          return message;
+        });
+
+        console.log(newMessages);
+
+        this.setState({ parrots: newParrotsCount, messages: newMessages });
       });
     }
     else {
@@ -99,10 +106,19 @@ class TagChatter extends React.Component {
 
       await api.put(`/messages/${message.id}/parrot`, {}).then((response) => {
 
-        messageWithParrot = response.data;
-        newParrotsCount = this.state.parrots + 1;
-        
-        this.setState({ parrots: newParrotsCount });
+        const messageWithParrot = response.data;
+        const newParrotsCount = this.state.parrots + 1;
+
+        const newMessages = Array.from(this.state.messages).map((message) => {
+          if (message.id == messageWithParrot.id) {
+            message.has_parrot = true;
+          }
+          return message;
+        });
+
+        console.log(newMessages);
+
+        this.setState({ parrots: newParrotsCount, messages: newMessages});
     })
   }
 }

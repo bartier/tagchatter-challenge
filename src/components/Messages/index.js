@@ -13,11 +13,11 @@ class Messages extends React.Component {
   }
 
   componentDidUpdate() {
-    this.scrollToBottom();
+    // this.scrollToBottom();
   }
 
   scrollToBottom() {
-    this.el.scrollIntoView({ behavior: 'instant' });
+    this.el.scrollIntoView({ behavior: 'smooth' });
   }
 
   render() {
