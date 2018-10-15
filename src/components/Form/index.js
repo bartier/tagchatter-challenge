@@ -3,6 +3,7 @@ import React from 'react'
 import './styles.css'
 import Button from '../Button'
 
+
 class Form extends React.Component {
   constructor(props) {
     super(props);
@@ -14,7 +15,6 @@ class Form extends React.Component {
 
   handleSubmitMessage = (event) => {
     const messageContent = this.state.message;
-    console.log(messageContent);
     this.props.sendMessage(messageContent);
   }
 

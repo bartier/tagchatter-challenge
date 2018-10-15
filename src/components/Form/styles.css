@@ -29,6 +29,7 @@
   -moz-appearance: none; 
   border: 2px solid #e6e3e3;
   outline: none;
+  resize: none;
 }
 
 .form .send-icon {

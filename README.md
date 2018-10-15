@@ -18,8 +18,8 @@ Adicionalmente você pode implementar o `unparrot` de mensagens, quando o usuár
 
 ### Requisitos adicionais
 - [X] Você pode continuar a implementação sem nenhum framework ou utilizar AngularJS, ReactJS ou VueJS
-- [ ] Você pode utilizar qualquer outra biblioteca adicional que achar necessário (jQuery, por exemplo)
-- [ ] *As requisições para a API devem ser feitas client-side*. **Não** queremos que você divida a sua aplicação em várias páginas.
+- [X] Você pode utilizar qualquer outra biblioteca adicional que achar necessário (jQuery, por exemplo)
+- [X] *As requisições para a API devem ser feitas client-side*. **Não** queremos que você divida a sua aplicação em várias páginas.
 
 ## Submissão
 Envie o URL de um repositório git público para `team@tagview.com.br`. Usamos bastante o [GitLab](https://gitlab.com) e o [GitHub](https://github.com).

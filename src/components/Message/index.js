@@ -20,30 +20,27 @@ handleParrotClick = (event) => {
     created_at: this.props.created_at,
     author: this.props.author
   }
-  console.log(message);
 
   this.props.updateMessageParrot(message);
 }
 
   render() {
-    return <div className="message">
+    return <div className={"message " + (this.props.has_parrot ? "message__yellow" : "")}>
 
-      <img className="author-img" src={this.props.author.avatar} alt="Avatar of message's author"/>
+      <img className="message__authorImg" src={this.props.author.avatar} alt="Avatar of message's author"/>
 
-      <div className="message-right">
+      <div className="message__right">
       
-        <span className="author-name">{this.props.author.name}</span>
+        <span className="message__authorName">{this.props.author.name}</span>
 
+        <span className="message__date">{this.formateDate(this.props.created_at)}</span>
 
-        <span className="message-date">{this.formateDate(this.props.created_at)}</span>
-
-
-        <img className="parrot"
+        <img className="message__parrot"
              onClick={this.handleParrotClick} 
-             src={this.props.has_parrot ? "parrot.svg" : "parrot-grey.svg"} 
-             alt="Parrot" /> : 
+             src={this.props.has_parrot ? "parrot.gif" : "parrot-grey.svg"} 
+             alt="Parrot" /> 
 
-        <p className="message-content">
+        <p className="message__content">
           {this.props.content}
         </p>
       

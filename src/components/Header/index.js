@@ -6,10 +6,10 @@ import './styles.css'
 class Header extends React.Component {
   render() {
     return <header className="header">
-      <h1 className="title">#tagchatter</h1>
+      <h1 className="header__title">#tagchatter</h1>
 
-      <div className="parrots-count">
-        <ParrotsCounter className="title" parrots={this.props.parrots}/>
+      <div className="header__parrots-count">
+        <ParrotsCounter parrots={this.props.parrots}/>
       </div>
       
     </header>

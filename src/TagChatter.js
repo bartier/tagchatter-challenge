@@ -1,5 +1,6 @@
 import React from 'react'
 
+
 import SideBar from './components/SideBar'
 import Header from './components/Header'
 import Messages from './components/Messages'
@@ -21,7 +22,8 @@ class TagChatter extends React.Component {
         name: ''
       },
       messages: [],
-      parrots: 0
+      parrots: 0,
+      sendErrorAlert: false
     }
 
     // window.setInterval(() => {
@@ -65,40 +67,46 @@ class TagChatter extends React.Component {
       message: messageContent
     }
 
-    console.log(newMessage);
-
     await api.post('/messages', newMessage).then((response) => {
       const responseMessage = response.data;
 
       this.setState({ messages: this.state.messages.concat(responseMessage) })
 
     }).catch((error) => {
-      //TODO: handle errors.
+      this.setState({sendErrorAlert: true});
     });
 
     console.log('Sent message');
   }
 
   updateMessageParrot = async (message) => {
+    let newParrotsCount;
+    let messageWithParrot;
+
     if (message.has_parrot) {
-      await api.put(`/messages/ ${message.id} /unparrot`, {}).then((response) => {
-        console.log(response.data);
+      console.log('message has parrot');
 
-        const newParrotsCount = this.state.parrotsCount - 1;
+      await api.put(`/messages/${message.id}/unparrot`, {}).then((response) => {
 
-        this.setState({ parrots: newParrotsCount });
+        messageWithParrot = response.data;
+        newParrotsCount = this.state.parrots - 1;
+
+        this.setState({ parrots: newParrotsCount});
       });
     }
     else {
-      await api.put(`/messages/ ${message.id} /parrot`, {}).then((response) => {
-        console.log(response.data);
+      console.log('message has NOT parrot');
 
-        const newParrotsCount = this.state.parrotsCount + 1;
+      await api.put(`/messages/${message.id}/parrot`, {}).then((response) => {
 
+        messageWithParrot = response.data;
+        newParrotsCount = this.state.parrots + 1;
+        
         this.setState({ parrots: newParrotsCount });
-      });
-    }
+    })
   }
+}
+
 
   render() {
 

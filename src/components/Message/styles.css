@@ -1,12 +1,21 @@
 .message {
   display: flex;
   flex-direction: row;
-  padding-top: 30px;
+  padding-top: 36px;
+  padding-bottom: 6px;
   padding-left: 24px;
-  margin-bottom: 12px;
+  /* margin-bottom: 12px; */
 }
 
-.author-img {
+.message::last-child {
+  margin-bottom: 0;
+}
+
+.message__yellow {
+  background-color: #FFFAE7;
+}
+
+.message__authorImg {
   max-width: 32px;
   max-height: 32px;
   border-radius: 10px;
@@ -14,24 +23,16 @@
   margin-right: 34px;
 }
 
-.message-right {
+.message__right {
   float: right;
 }
 
-.message_author {
-  font-style: normal;
-  font-weight: normal;
-  line-height: 15px;
+.message__authorName {
   font-size: 15px;
   color: #494949;
 }
 
-.author-name {
-  font-size: 15px;
-  color: #494949;
-}
-
-.message-date {
+.message__date {
   font-family: Lato;
   font-style: normal;
   font-weight: normal;
@@ -40,7 +41,7 @@
   color: #D1D1D1;
 }
 
-.message-date::before, .message-date::after {
+.message__date::before, .message__date::after {
   display: inline-block;
   content: "";
   background-color: #E5E5E5;
@@ -51,11 +52,11 @@
   margin-left: 7px;
 }
 
-.parrot {
+.message__parrot {
   cursor: pointer;
 }
 
-.message-content {
+.message__content {
   margin-top: 10px;
   font-family: IBM Plex Sans;
   font-style: normal;

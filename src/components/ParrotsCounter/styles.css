@@ -1,5 +1,0 @@
-.parrots-count::before {
-  content: url('/light-parrot.svg');
-  align-self: center;
-  margin-right: 10px;
-}

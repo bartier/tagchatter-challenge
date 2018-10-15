@@ -3,7 +3,7 @@
   background-color: #25272E;
 }
 
-.logo::after {
+.side__bar .logo::after {
   content: "";
   width: 100%;
   height: 2px;

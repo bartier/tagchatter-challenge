@@ -13,7 +13,7 @@ class Messages extends React.Component {
   }
 
   componentDidUpdate() {
-    this.scrollToBottom(); /* add smooth later :p */
+    this.scrollToBottom();
   }
 
   scrollToBottom() {

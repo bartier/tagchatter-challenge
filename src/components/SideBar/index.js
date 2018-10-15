@@ -3,7 +3,7 @@ import './styles.css'
 
 const SideBar = () => (
   <aside className="sidebar">
-    <div className="logo">
+    <div className="sidebar__logo">
       <img src='logo.png' alt="TagChatter Logo"/>
     </div>
   </aside>
