@@ -23,11 +23,13 @@ class TagChatter extends React.Component {
       },
       messages: [],
       parrots: 0,
-      sendErrorAlert: false
+      sendErrorAlert: false,
+      scrollMessagesList: true,
+      
     }
 
     window.setInterval(() => {
-      this.loadMessages();
+      this.updateMessages();
     }, 3000);
   }
 
@@ -51,6 +53,11 @@ class TagChatter extends React.Component {
     this.setState({ messages: response.data });
 
     console.log('Messages loaded');
+  }
+
+  updateMessages = async () => {
+    this.setState({ scrollMessagesList: false}) // do scroll only 1st time
+    this.loadMessages();
   }
 
   loadParrots = async () => {
@@ -98,7 +105,7 @@ class TagChatter extends React.Component {
 
         console.log(newMessages);
 
-        this.setState({ parrots: newParrotsCount, messages: newMessages });
+        this.setState({ parrots: newParrotsCount, messages: newMessages, scrollMessagesList: false });
       });
     }
     else {
@@ -118,7 +125,7 @@ class TagChatter extends React.Component {
 
         console.log(newMessages);
 
-        this.setState({ parrots: newParrotsCount, messages: newMessages});
+        this.setState({ parrots: newParrotsCount, messages: newMessages, scrollMessagesList: false});
     })
   }
 }
@@ -131,7 +138,8 @@ class TagChatter extends React.Component {
       <div className="content">
         <Header parrots={this.state.parrots} />
         <Messages messages={this.state.messages} 
-                  updateMessageParrot={this.updateMessageParrot} />
+                  updateMessageParrot={this.updateMessageParrot}
+                  scrollMessagesList={this.state.scrollMessagesList} />
 
         <Form avatar={this.state.user.avatar}
               sendMessage={this.sendMessage} />

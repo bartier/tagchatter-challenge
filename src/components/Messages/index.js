@@ -8,12 +8,11 @@ import Message from '../Message'
 
 class Messages extends React.Component {
 
-  componentDidMount() {
-    this.scrollToBottom();
-  }
-
   componentDidUpdate() {
-    // this.scrollToBottom();
+    if (!this.props.scrollMessagesList) {
+      return;
+    }
+    this.scrollToBottom();
   }
 
   scrollToBottom() {

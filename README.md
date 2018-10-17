@@ -3,7 +3,7 @@
 ### Requisitos técnicos
 1. [X] Deve ser feito um request para `/me` onde serão obtidos os dados necessários para exibir a imagem do usuário e o seu ID, utilizado no envio de mensagem
 2. [X] A lista de mensagens deve ser atualizada a cada 3 segundos
-3. [ ] Ao clicar no ícone ![parrot](https://user-images.githubusercontent.com/18057391/46910713-81000c80-cf1f-11e8-9543-1050854881b3.gif) deve-se:
+3. [X] Ao clicar no ícone ![parrot](https://user-images.githubusercontent.com/18057391/46910713-81000c80-cf1f-11e8-9543-1050854881b3.gif) deve-se:
    - Fazer um request para `PUT /messages/:messageId/parrot`
    - Destacar a mensagem na interface, seguindo o layout
    - Incrementar o contador
@@ -12,9 +12,9 @@
 
 #### Bônus (opcional) :star2:
 Adicionalmente você pode implementar o `unparrot` de mensagens, quando o usuário clicar no ícone ![parrot](https://user-images.githubusercontent.com/18057391/46910713-81000c80-cf1f-11e8-9543-1050854881b3.gif) de uma mensagem já destacada:
-1. [ ] Fazer um request para `PUT /messages/:messageId/unparrot`
-2. [ ] Remover o destaque da mensagem na interface
-3. [ ] Decrementar o contador
+1. [X] Fazer um request para `PUT /messages/:messageId/unparrot`
+2. [X] Remover o destaque da mensagem na interface
+3. [X] Decrementar o contador
 
 ### Requisitos adicionais
 - [X] Você pode continuar a implementação sem nenhum framework ou utilizar AngularJS, ReactJS ou VueJS
