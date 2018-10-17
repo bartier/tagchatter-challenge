@@ -97,7 +97,7 @@ class TagChatter extends React.Component {
         const newParrotsCount = this.state.parrots - 1;
 
         const newMessages = Array.from(this.state.messages).map((message) => {
-          if (message.id == messageWithParrot.id) {
+          if (message.id === messageWithParrot.id) {
             message.has_parrot = false;
           }
           return message;
@@ -117,7 +117,7 @@ class TagChatter extends React.Component {
         const newParrotsCount = this.state.parrots + 1;
 
         const newMessages = Array.from(this.state.messages).map((message) => {
-          if (message.id == messageWithParrot.id) {
+          if (message.id === messageWithParrot.id) {
             message.has_parrot = true;
           }
           return message;
