@@ -37,7 +37,7 @@ handleParrotClick = (event) => {
 
         <img className="message__parrot"
              onClick={this.handleParrotClick} 
-             src={this.props.has_parrot ? "parrot.gif" : "parrot-grey.svg"} 
+             src={this.props.has_parrot ? "parrot.gif" : "grey-parrot.svg"} 
              alt="Parrot" /> 
 
         <p className="message__content">

@@ -2,7 +2,27 @@
 
 ### Requisitos técnicos
 1. [X] Deve ser feito um request para `/me` onde serão obtidos os dados necessários para exibir a imagem do usuário e o seu ID, utilizado no envio de mensagem
+```
+// TagChatter.js
+...
+  loadUserData = async () => {
+    const response = await api.get('/me');
+
+    this.setState({ user: response.data });
+
+    console.log('User data loaded');
+  }
+...
+```
 2. [X] A lista de mensagens deve ser atualizada a cada 3 segundos
+```
+// TagChatter.js
+...
+    window.setInterval(() => {
+      this.updateMessages();
+    }, 3000);
+...
+```
 3. [X] Ao clicar no ícone ![parrot](https://user-images.githubusercontent.com/18057391/46910713-81000c80-cf1f-11e8-9543-1050854881b3.gif) deve-se:
    - Fazer um request para `PUT /messages/:messageId/parrot`
    - Destacar a mensagem na interface, seguindo o layout

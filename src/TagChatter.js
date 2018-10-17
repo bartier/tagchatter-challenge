@@ -1,5 +1,7 @@
 import React from 'react'
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import SideBar from './components/SideBar'
 import Header from './components/Header'
@@ -23,9 +25,7 @@ class TagChatter extends React.Component {
       },
       messages: [],
       parrots: 0,
-      sendErrorAlert: false,
-      scrollMessagesList: true,
-      
+      scrollMessagesList: true
     }
 
     window.setInterval(() => {
@@ -55,17 +55,17 @@ class TagChatter extends React.Component {
     console.log('Messages loaded');
   }
 
-  updateMessages = async () => {
-    this.setState({ scrollMessagesList: false}) // do scroll only 1st time
-    this.loadMessages();
-  }
-
   loadParrots = async () => {
     const response = await api.get("/messages/parrots-count");
 
     this.setState({ parrots: response.data });
 
     console.log('Parrots loaded');
+  }
+
+  updateMessages = async () => {
+    this.setState({ scrollMessagesList: false}) // do scroll only 1st time
+    this.loadMessages();
   }
 
   sendMessage = async (messageContent) => {
@@ -80,7 +80,7 @@ class TagChatter extends React.Component {
       this.setState({ messages: this.state.messages.concat(responseMessage) })
 
     }).catch((error) => {
-      this.setState({sendErrorAlert: true});
+      this.notify();
     });
 
     console.log('Sent message');
@@ -130,6 +130,14 @@ class TagChatter extends React.Component {
   }
 }
 
+notify = () => toast.error('Não foi possível enviar a mensagem, tente novamente!', {
+  position: "bottom-center",
+  autoClose: 5000,
+  hideProgressBar: false,
+  closeOnClick: true,
+  pauseOnHover: true,
+  draggable: true
+  });
 
   render() {
 
@@ -144,6 +152,17 @@ class TagChatter extends React.Component {
         <Form avatar={this.state.user.avatar}
               sendMessage={this.sendMessage} />
       </div>
+      <ToastContainer
+        position="bottom-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnVisibilityChange
+        draggable
+        pauseOnHover
+        />
     </div>
   }
 }
