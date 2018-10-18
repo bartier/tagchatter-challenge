@@ -8,7 +8,7 @@
    - Destacar a mensagem na interface, seguindo o layout
    - Incrementar o contador
 4. [X] Ao clicar no botão enviar, ao lado do campo de texto, deve-se fazer um request para `POST /messages` e adicionar a nova mensagem na lista exibida
-5. [ ] O request para enviar mensagens (`POST /messages`) falha *intencionalmente* com uma probabilidade de 25%, retornando um erro 500. Idealmente a sua implementação deve tratar esses erros aleatórios, exibindo um `alert` (ou outro componente na interface) e permitindo que o usuário tente enviar a mensagem novamente mas você pode desabilitar os erros passando o parâmetro `stable`. Consulte [a documentação da API](https://tagchatter.herokuapp.com/docs/#/message/post_messages) para mais detalhes.
+5. [X] O request para enviar mensagens (`POST /messages`) falha *intencionalmente* com uma probabilidade de 25%, retornando um erro 500. Idealmente a sua implementação deve tratar esses erros aleatórios, exibindo um `alert` (ou outro componente na interface) e permitindo que o usuário tente enviar a mensagem novamente mas você pode desabilitar os erros passando o parâmetro `stable`. Consulte [a documentação da API](https://tagchatter.herokuapp.com/docs/#/message/post_messages) para mais detalhes.
 
 #### Bônus (opcional) :star2:
 Adicionalmente você pode implementar o `unparrot` de mensagens, quando o usuário clicar no ícone ![parrot](https://user-images.githubusercontent.com/18057391/46910713-81000c80-cf1f-11e8-9543-1050854881b3.gif) de uma mensagem já destacada:
