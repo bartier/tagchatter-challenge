@@ -1,6 +1,6 @@
 # TagChatter
 
-[I'm an inline-style link](https://github.com/tagview/tagchatter)
+[Link do enunciado do desafio](https://github.com/tagview/tagchatter)
 
 ### Instruções para executar projeto
 
