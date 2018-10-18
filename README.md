@@ -1,5 +1,12 @@
 # TagChatter
 
+### Instruções para executar projeto
+
+```
+npm install
+npm start
+```
+
 ### Requisitos técnicos
 1. [X] Deve ser feito um request para `/me` onde serão obtidos os dados necessários para exibir a imagem do usuário e o seu ID, utilizado no envio de mensagem
 2. [X] A lista de mensagens deve ser atualizada a cada 3 segundos
