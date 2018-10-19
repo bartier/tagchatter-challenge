@@ -34,12 +34,12 @@ class TagChatter extends React.Component {
   }
 
   componentDidMount() {
-    this.loadUserData();
-    this.loadMessages();
-    this.loadParrots();
+    this.getMe();
+    this.listMessages();
+    this.loadParrotsCounter();
   }
 
-  loadUserData = async () => {
+  getMe = async () => {
     const response = await api.get('/me');
 
     this.setState({ user: response.data });
@@ -47,7 +47,7 @@ class TagChatter extends React.Component {
     console.log('User data loaded');
   }
 
-  loadMessages = async () => {
+  listMessages = async () => {
     const response = await api.get("/messages");
 
     this.setState({ messages: response.data });
@@ -55,7 +55,7 @@ class TagChatter extends React.Component {
     console.log('Messages loaded');
   }
 
-  loadParrots = async () => {
+  loadParrotsCounter = async () => {
     const response = await api.get("/messages/parrots-count");
 
     this.setState({ parrots: response.data });
@@ -65,7 +65,7 @@ class TagChatter extends React.Component {
 
   updateMessages = async () => {
     this.setState({ scrollMessagesList: false}) // do scroll only 1st time
-    this.loadMessages();
+    this.listMessages();
   }
 
   sendMessage = async (messageContent) => {
